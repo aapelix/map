@@ -2,6 +2,18 @@ import { useEffect } from "preact/hooks";
 import L, { latLng } from "leaflet";
 import { news as newsData } from "./data";
 
+import iconUrl from "leaflet/dist/images/marker-icon.png?url";
+import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png?url";
+import shadowUrl from "leaflet/dist/images/marker-shadow.png?url";
+
+const DefaultIcon = L.icon({
+  iconUrl,
+  iconRetinaUrl,
+  shadowUrl,
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
 export function App() {
   useEffect(() => {
     const map = L.map("map").setView([20, 0], 2);
